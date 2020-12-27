@@ -93,9 +93,6 @@ public class Questions
       // Q8. Find the transaction with the smallest value.
       System.out.println("\nQ8. Find the transaction with the smallest value: ");
       System.out.println(transactions.stream()
-               .map(Transaction::getValue)
-               .sorted()
-               .collect(Collectors.toList())
-               .get(0)); 
+                                     .reduce((t1, t2) -> t1.getValue() < t2.getValue()?t1:t2)); 
    }
 }
