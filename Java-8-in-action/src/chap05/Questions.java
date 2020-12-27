@@ -23,6 +23,7 @@ public class Questions
          return -1; 
       }
    }
+   
    public static void main(String[] args)
    {
       Trader raoul = new Trader("Raoul", "Cambridge"); 
@@ -47,10 +48,10 @@ public class Questions
       
       // Q2. What are all the unique cities where the traders work? 
       List<String> q2 = transactions.stream()
-                                    .map(Transaction::getTrader)
-                                    .map(Trader::getCity)
+                                    .map((Transaction t) -> t.getTrader().getCity())
                                     .distinct()
                                     .collect(Collectors.toList());
+      
       System.out.println("\nQ2. Printing all Unique Cities");
       q2.forEach(System.out::println); 
       
@@ -69,13 +70,12 @@ public class Questions
                   .map((t)-> t.getTrader().getName())
                   .distinct()
                   .sorted()
-                  .forEach(System.out::println); 
+                  .reduce("", (s1, s2) -> s1 + s2); 
       
       // Q5. Are any traders based in milan?
       System.out.println("\nQ5. Are any traders based in milan? ");
       System.out.println("Answer: " + (transactions.stream()
-                  .filter((Transaction t) -> t.getTrader().getCity().equals("Milan"))
-                  .count() > 0)); 
+                  .anyMatch((Transaction t) -> t.getTrader().getCity().equals("Milan")))); 
       
       // Q6. Print all transaction values from the traders living in Cambridge. 
       System.out.println("\nQ6. Print all transaction values from the traders living in Cambridge");
