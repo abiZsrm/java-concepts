@@ -1,0 +1,3 @@
+Hi, 
+
+This is a sample data text file that could be used for the file IO - DB - experiment. 
