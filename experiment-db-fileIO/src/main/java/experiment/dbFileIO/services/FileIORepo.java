@@ -10,6 +10,9 @@ public interface FileIORepo
    public void saveFile(File inputFile)
       throws FileNotFoundException; 
    
-   public void readRandomFile(String inputFileName)
+   public void readTxtFile(String inputFileName)
+      throws IOException, SQLException; 
+   
+   public void readSpreadSheetFile(String inputFileName)
       throws IOException, SQLException; 
 }
